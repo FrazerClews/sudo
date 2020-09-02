@@ -13,31 +13,31 @@ ftp.sudo.ws in the directory /pub/sudo/ or from the sudo web site,
 
 The distribution is sudo-M.m.tar.gz where `M` is the major version
 number and `m` is the minor version number.  BETA versions of sudo may
-also be available.  If you join the `sudo-workers` mailing list you
+also be available. If you join the `sudo-workers` mailing list you
 will get the BETA announcements (see the `Mailing lists` section below).
 
 ## What's new
 
-See the NEWS file for a list of major changes in this release.
+See the [NEWS](./NEWS) file for a list of major changes in this release.
 For a complete list of changes, see the ChangeLog file.  For a
 summary of major changes to the current stable release, see the web
 page, <https://www.sudo.ws/stable.html>.
 
 If you are upgrading from an earlier version of Sudo, please see
-the UPGRADE file in the doc directory.
+the [UPGRADE](./doc/UPGRADE) file in the doc directory.
 
-For a history of sudo please see the HISTORY file in the doc directory.
-You can find a list of contributors to sudo in the doc/CONTRIBUTORS file.
+For a history of sudo please see the [HISTORY](./doc/HISTORY) file in the doc directory.
+You can find a list of contributors to sudo in [CONTRIBUTORS](./docs/CONTRIBUTORS).
 
 ## Building the release
 
-Please read the installation guide in the `INSTALL` file before trying to
+Please read the installation guide in the [INSTALL](./INSTALL) file before trying to
 build sudo.  Pay special attention to the "OS dependent notes" section.
 
 ## Copyright
 
 Sudo is distributed under an ISC-style license.
-Please refer to the `LICENSE` file included with the release for details.
+Please refer to the [LICENSE](./doc/LICENSE) file included with the release for details.
 
 ## Mailing lists
 
@@ -75,7 +75,6 @@ about beta versions and other useful info.
 If you have found what you believe to be a bug, you can file a bug
 report in the sudo bug database, on the web at <https://bugzilla.sudo.ws/>.
 
-Please read over the `TROUBLESHOOTING` file in the doc directory *before*
-submitting a bug report.  When reporting bugs, please be sure to include
-the version of sudo you are using as well as the platform you are running
-it on.
+Please read over the [TROUBLESHOOTING](./doc/TROUBLESHOOTING) file in the doc directory *before* submitting a bug report.  When reporting bugs, please be
+sure to include the version of sudo you are using as well as the platform you
+are running it on.
