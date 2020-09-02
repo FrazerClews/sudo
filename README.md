@@ -1,11 +1,11 @@
-The sudo philosophy
-===================
+# The sudo philosophy
+
 Sudo is a program designed to allow a sysadmin to give limited root privileges
 to users and log root activity.  The basic philosophy is to give as few
 privileges as possible but still allow people to get their work done.
 
-Where to find sudo
-==================
+## Where to find sudo
+
 Before you try and build sudo, *please* make sure you have the current
 version.  The latest sudo may always be gotten via anonymous ftp from
 ftp.sudo.ws in the directory /pub/sudo/ or from the sudo web site,
@@ -16,8 +16,8 @@ number and `m' is the minor version number.  BETA versions of sudo may
 also be available.  If you join the `sudo-workers' mailing list you
 will get the BETA announcements (see the `Mailing lists' section below).
 
-What's new
-==========
+## What's new
+
 See the NEWS file for a list of major changes in this release.
 For a complete list of changes, see the ChangeLog file.  For a
 summary of major changes to the current stable release, see the web
@@ -29,18 +29,18 @@ the UPGRADE file in the doc directory.
 For a history of sudo please see the HISTORY file in the doc directory.
 You can find a list of contributors to sudo in the doc/CONTRIBUTORS file.
 
-Building the release
-====================
+## Building the release
+
 Please read the installation guide in the `INSTALL' file before trying to
 build sudo.  Pay special attention to the "OS dependent notes" section.
 
-Copyright
-=========
+## Copyright
+
 Sudo is distributed under an ISC-style license.
 Please refer to the `LICENSE' file included with the release for details.
 
-Mailing lists
-=============
+## Mailing lists
+
 sudo-announce	This list receives announcements whenever a new version
 		of sudo is released.
 		https://www.sudo.ws/mailman/listinfo/sudo-announce
@@ -67,14 +67,14 @@ a significant win.
 Mailing list archives are also available.  See the mailing list web sites
 for the appropriate links.
 
-Web page
-========
+## Web page
+
 There is a sudo web page at https://www.sudo.ws/ that contains an
 overview of sudo, documentation, downloads, a bug tracker, information
 about beta versions and other useful info.
 
-Bug reports
-===========
+## Bug reports
+
 If you have found what you believe to be a bug, you can file a bug
 report in the sudo bug database, on the web at https://bugzilla.sudo.ws/.
 
