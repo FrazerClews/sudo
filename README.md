@@ -41,23 +41,20 @@ Please refer to the `LICENSE' file included with the release for details.
 
 ## Mailing lists
 
-sudo-announce	This list receives announcements whenever a new version
-		of sudo is released.
-		https://www.sudo.ws/mailman/listinfo/sudo-announce
+sudo-announce - This list receives announcements whenever a new version
+of sudo is released. https://www.sudo.ws/mailman/listinfo/sudo-announce
 
-sudo-blog	This list receives a message when a new sudo blog
-		article is available.
-		https://www.sudo.ws/mailman/listinfo/sudo-blog
+sudo-blog - This list receives a message when a new sudo blog
+article is available. https://www.sudo.ws/mailman/listinfo/sudo-blog
 
-sudo-commits	This list receives a message for each commit made to
-		the sudo source repository.
-		https://www.sudo.ws/mailman/listinfo/sudo-commits
+sudo-commits - This list receives a message for each commit made to
+the sudo source repository. https://www.sudo.ws/mailman/listinfo/sudo-commits
 
-sudo-users	This list is for questions and general discussion about sudo.
-		https://www.sudo.ws/mailman/listinfo/sudo-users
+sudo-users - This list is for questions and general discussion about sudo.
+https://www.sudo.ws/mailman/listinfo/sudo-users
 
-sudo-workers	This list is for people working on and porting sudo.
-		https://www.sudo.ws/mailman/listinfo/sudo-workers
+sudo-workers - This list is for people working on and porting sudo.
+https://www.sudo.ws/mailman/listinfo/sudo-workers
 
 To subscribe to a list, visit its url (as listed above) and enter
 your email address to subscribe.  Digest versions are available but
