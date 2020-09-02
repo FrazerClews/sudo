@@ -1,14 +1,15 @@
-Troubleshooting tips and FAQ for Sudo
-=====================================
+# Troubleshooting tips and FAQ for Sudo
 
-Q) When I run configure, it says "C compiler cannot create executables".
+## Q) When I run configure, it says "C compiler cannot create executables"
+
 A) This usually means you either don't have a working compiler.  This
    could be due to the lack of a license or that some component of the
    compiler suite could not be found.  Check config.log for clues as
    to why this is happening.  On many systems, compiler components live
    in /usr/ccs/bin which may not be in your PATH environment variable.
 
-Q) When I run configure, it says "sudo requires the 'ar' utility to build".
+## Q) When I run configure, it says "sudo requires the 'ar' utility to build"
+
 A) As part of the build process, sudo creates a temporary library containing
    objects that are shared amongst the different sudo executables.
    On Unix systems, the "ar" utility is used to do this.  This error
@@ -16,17 +17,16 @@ A) As part of the build process, sudo creates a temporary library containing
    you may need to install the SUNWbtool package.  On other systems
    "ar" may be included in the GNU binutils package.
 
-Q) Sudo compiles and installs OK but when I try to run it I get:
-   /usr/local/bin/sudo must be owned by uid 0 and have the setuid bit set
+## Q) Sudo compiles and installs OK but when I try to run it I get: /usr/local/bin/sudo must be owned by uid 0 and have the setuid bit set
+
 A) Sudo must be setuid root to do its work.  Either /usr/local/bin/sudo
    is not owned by uid 0 or the setuid bit is not set.  This should have
    been done for you by "make install" but you can fix it manually by
    running the following as root:
     # chown root /usr/local/bin/sudo; chmod 4755 /usr/local/bin/sudo
 
-Q) Sudo compiles and installs OK but when I try to run it I get:
-    effective uid is not 0, is /usr/local/bin/sudo on a file system with the
-    'nosuid' option set or an NFS file system without root privileges?
+## Q) Sudo compiles and installs OK but when I try to run it I get: effective uid is not 0, is /usr/local/bin/sudo on a file system with the 'nosuid' option set or an NFS file system without root privileges?`
+
 A) The owner and permissions on the sudo binary appear to be OK but when
    sudo ran, the setuid bit did not have an effect.  There are two common
    causes for this.  The first is that the file system the sudo binary
@@ -39,23 +39,22 @@ A) The owner and permissions on the sudo binary appear to be OK but when
    should be able to determine whether sudo is located on an NFS-mounted
    filesystem by running "df `which sudo'".
 
-Q) Sudo never gives me a chance to enter a password using PAM, it just
-   says 'Sorry, try again.' three times and exits.
+## Q) Sudo never gives me a chance to enter a password using PAM, it just says 'Sorry, try again.' three times and exits.
+
 A) You didn't setup PAM to work with sudo.  On RedHat Linux or Fedora
    Core this generally means installing the sample pam.conf file as
    /etc/pam.d/sudo.  See the example pam.conf file for hints on what
    to use for other Linux systems.
 
-Q) Sudo says 'Account expired or PAM config lacks an "account"
-   section for sudo, contact your system administrator' and exits
-   but I know my account has not expired.
+## Q) Sudo says 'Account expired or PAM config lacks an "account" section for sudo, contact your system administrator' and exits but I know my account has not expired.
+
 A) Your PAM config lacks an "account" specification.  On Linux this
    usually means you are missing a line like:
    account    required    pam_unix.so
    in /etc/pam.d/sudo.
 
-Q) Sudo is setup to log via syslog(3) but I'm not getting any log
-   messages.
+## Q) Sudo is setup to log via syslog(3) but I'm not getting any log messages.
+
 A) Make sure you have an entry in your syslog.conf file to save
    the sudo messages (see the example syslog.conf file).  The default
    log facility is authpriv (changeable via configure or in sudoers).
@@ -67,8 +66,8 @@ A) Make sure you have an entry in your syslog.conf file to save
      destination (e.g. "/var/log/auth" or "@loghost") by
      tabs, *not* spaces.  This is a common error.
 
-Q) When sudo asks me for my password it never accepts what I enter even
-   though I know I entered my password correctly.
+## Q) When sudo asks me for my password it never accepts what I enter even though I know I entered my password correctly.
+
 A) If you are not using pam and your system uses shadow passwords,
    it is possible that sudo didn't properly detect that shadow
    passwords are in use.  Take a look at the generated config.h
@@ -79,18 +78,18 @@ A) If you are not using pam and your system uses shadow passwords,
    Note that there is no define for 4.4BSD-based shadow passwords
    since that just uses the standard getpw* routines.
 
-Q) Can sudo use the ssh agent for authentication instead of asking
-   for the user's Unix password?
+## Q) Can sudo use the ssh agent for authentication instead of asking for the user's Unix password?
+
 A) Not directly, but you can use a PAM module like pam_ssh_agent_auth
    or pam_ssh for this purpose.
 
-Q) I don't want the sudoers file in /etc, how can I specify where it
-   should go?
+## Q) I don't want the sudoers file in /etc, how can I specify where it should go?
+
 A) Use the --sysconfdir option to configure.  Ie:
    configure --sysconfdir=/dir/you/want/sudoers/in
 
-Q) Can I put the sudoers file in NIS/NIS+ or do I have to have a
-   copy on each machine?
+## Q) Can I put the sudoers file in NIS/NIS+ or do I have to have a copy on each machine?
+
 A) There is no support for making an NIS/NIS+ map/table out of
    the sudoers file at this time.  You can distribute the sudoers
    file via rsync or rdist.  It is also possible to NFS-mount the
@@ -98,21 +97,22 @@ A) There is no support for making an NIS/NIS+ map/table out of
    in sudo's LDAP sudoers support, see the README.LDAP file and the
    sudoers.ldap manual.
 
-Q) I don't run sendmail on my machine.  Does this mean that I cannot
-   use sudo?
+## Q) I don't run sendmail on my machine.  Does this mean that I cannot use sudo?
+
 A) No, you just need to disable mailing with a line like:
    Defaults !mailerpath
    in your sudoers file or run configure with the --without-sendmail
    option.
 
-Q) When I run visudo it uses vi as the editor and I hate vi.  How
-   can I make it use another editor?
+## Q) When I run visudo it uses vi as the editor and I hate vi. How can I make it use another editor?
+
 A) You can specify the editor to use in visudo in the sudoers file.
    See the "editor" and "env_editor" entries in the sudoers manual.
    The defaults can also be set at configure time using the
    --with-editor and --with-env-editor configure options.
 
-Q) Sudo appears to be removing some variables from the environment, why?
+## Q) Sudo appears to be removing some variables from the environment, why?
+
 A) By default, sudo runs commands with a new, minimal environment.
    The "env_keep" setting in sudoers can be used to control which
    environment variables are preserved from the invoking user's
@@ -123,7 +123,8 @@ A) By default, sudo runs commands with a new, minimal environment.
    list, doing so is strongly discouraged.  See the "Command
    environment" section of the sudoers manual for more information.
 
-Q) Why does sudo reset the HOME environment variable?
+## Q) Why does sudo reset the HOME environment variable?
+
 A) Many programs use the HOME environment variable to locate
    configuration and data files.  Often, these configuration files
    are treated as trusted input that affects how the program operates.
@@ -141,7 +142,8 @@ A) Many programs use the HOME environment variable to locate
    with sudo should run sudoedit (or sudo -e) to get their accustomed
    editor configuration instead of invoking the editor directly.
 
-Q) How can I keep sudo from asking for a password?
+## Q) How can I keep sudo from asking for a password?
+
 A) To specify this on a per-user (and per-command) basis, use the
    'NOPASSWD' tag right before the command list in sudoers.  See
    the sudoers man page and examples/sudoers for details.  To disable
@@ -151,17 +153,16 @@ A) To specify this on a per-user (and per-command) basis, use the
    entry in sudoers.  To hard-code the global default, you can
    configure with the --without-passwd option.
 
-Q) When I run configure, it dies with the following error:
-   "no acceptable cc found in $PATH".
+## Q) When I run configure, it dies with the following error: "no acceptable cc found in $PATH".
+
 A) /usr/ucb/cc was the only C compiler that configure could find.
    You need to tell configure the path to the "real" C compiler
    via the --with-CC option.  On Solaris, the path is probably
    something like "/opt/SUNWspro/SC4.0/bin/cc".  If you have gcc
    that will also work.
 
-Q) When I run configure, it dies with the following error:
-   Fatal Error: config.cache exists from another platform!
-   Please remove it and re-run configure.
+## Q) When I run configure, it dies with the following error: `Fatal Error: config.cache exists from another platform! Please remove it and re-run configure.`
+
 A) configure caches the results of its tests in a file called
    config.cache to make re-running configure speedy.  However,
    if you are building sudo for a different platform the results
@@ -170,8 +171,8 @@ A) configure caches the results of its tests in a file called
    Note that "make realclean" will also remove any object files
    and configure temp files that are laying around as well.
 
-Q) I built sudo on a Solaris 11 (or higher) machine but the resulting
-   binary doesn't work older Solaris versions.  Why?
+## Q) I built sudo on a Solaris 11 (or higher) machine but the resulting binary doesn't work older Solaris versions. Why?
+
 A) Starting with Solaris 11, asprintf(3) is included in the standard
    C library.  To build a version of sudo on a Solaris 11 machine that
    will run on an older Solaris release, edit config.h and comment out
@@ -180,17 +181,18 @@ A) Starting with Solaris 11, asprintf(3) is included in the standard
    #define HAVE_VASPRINTF 1
    and run make.
 
-Q) When I run "visudo" it says "sudoers file busy, try again later."
-   and doesn't do anything.
+## Q) When I run "visudo" it says "sudoers file busy, try again later." and doesn't do anything.
+
 A) Someone else is currently editing the sudoers file with visudo.
 
-Q) When I try to use "cd" with sudo it says "cd: command not found".
+## Q) When I try to use "cd" with sudo it says "cd: command not found".
+
 A) "cd" is a shell built-in command, you can't run it as a command
    since a child process (sudo) cannot affect the current working
    directory of the parent (your shell).
 
-Q) When I try to use "cd" with sudo the command completes without
-   errors but nothing happens.
+## Q) When I try to use "cd" with sudo the command completes without errors but nothing happens.
+
 A) Even though "cd" is a shell built-in command, some operating systems
    include a /usr/bin/cd command for some reason.  A standalone
    "cd" command is totally useless since a child process (cd) cannot
@@ -198,10 +200,8 @@ A) Even though "cd" is a shell built-in command, some operating systems
    Thus, "sudo cd /foo" will start a child process, change the
    directory and immediately exit without doing anything useful.
 
-Q) When I run sudo it says I am not allowed to run the command as root
-   but I don't want to run it as root, I want to run it as another user.
-   My sudoers file entry looks like:
-    bob  ALL=(oracle) ALL
+## Q) When I run sudo it says I am not allowed to run the command as root but I don't want to run it as root, I want to run it as another user. My sudoers file entry looks like: `bob  ALL=(oracle) ALL`
+
 A) The default user sudo tries to run things as is always root, even if
    the invoking user can only run commands as a single, specific user.
    This may change in the future but at the present time you have to
@@ -210,9 +210,8 @@ A) The default user sudo tries to run things as is always root, even if
     Defaults:bob  runas_default=oracle
    would achieve the desired result for the preceding sudoers fragment.
 
-Q) When I try to run sudo via ssh, I get the error:
-    sudo: a terminal is required to read the password; either use the -S
-     option to read from standard input or configure an askpass helper
+## Q) When I try to run sudo via ssh, I get the error: `sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper`
+
 A) If sudo needs to authenticate a user, it requires access to the user's
    terminal to disable echo so the password is not displayed to the screen.
    The above message indicates that no terminal was present.
@@ -227,9 +226,8 @@ A) If sudo needs to authenticate a user, it requires access to the user's
    the "visiblepw" sudoers option which will allow the password to be entered
    even when echo cannot be disabled, though this is not recommended.
 
-Q) When I try to use SSL-enabled LDAP with sudo I get an error:
-    unable to initialize SSL cert and key db: security library: bad database.
-    you must set TLS_CERT in /etc/ldap.conf to use SSL
+## Q) When I try to use SSL-enabled LDAP with sudo I get an error: `unable to initialize SSL cert and key db: security library: bad database. you must set TLS_CERT in /etc/ldap.conf to use SSL`
+
 A) On systems that use a Mozilla-derived LDAP SDK there must be a
    certificate database in place to use SSL-encrypted LDAP connections.
    This file is usually /var/ldap/cert8.db or /etc/ldap/cert8.db.
@@ -247,13 +245,14 @@ A) On systems that use a Mozilla-derived LDAP SDK there must be a
     Enter new password: <return>
     Re-enter password: <return>
 
-Q) On HP-UX, the umask setting in sudoers has no effect.
+## Q) On HP-UX, the umask setting in sudoers has no effect.
+
 A) If your /etc/pam.conf file has the libpam_hpsec.so.1 session module
    enabled, you may need to a add line like the following to pam.conf:
    sudo session required libpam_hpsec.so.1 bypass_umask
 
-Q) When I run "sudo -i shell_alias" I get "command not found" even
-   though the alias is defined in my shell startup files.
+## Q) When I run `sudo -i shell_alias` I get `command not found` even though the alias is defined in my shell startup files
+
 A) Commands run via "sudo -i" are executed by the shell in
    non-interactive mode.  The bash shell will only parse aliases in
    interactive mode unless the "expand_aliases" shell option is
@@ -261,8 +260,8 @@ A) Commands run via "sudo -i" are executed by the shell in
    (or .profile if using that instead) the aliases should now be
    available to "sudo -i".
 
-Q) When I run sudo on AIX I get the following error:
-    setuidx(ID_EFFECTIVE|ID_REAL|ID_SAVED, ROOT_UID): Operation not permitted.
+## Q) When I run sudo on AIX I get the following error: `setuidx(ID_EFFECTIVE|ID_REAL|ID_SAVED, ROOT_UID): Operation not permitted.`
+
 A) AIX's Enhanced RBAC is preventing sudo from running.  To fix
    this, add the following entry to /etc/security/privcmds (adjust
    the path to sudo as needed) and run the setkst command as root:
@@ -272,8 +271,8 @@ A) AIX's Enhanced RBAC is preventing sudo from running.  To fix
        innateprivs = PV_DAC_GID,PV_DAC_R,PV_DAC_UID,PV_DAC_X,PV_FS_CHOWN,PV_PROC_PRIO,PV_NET_PORT,PV_NET_CNTL,PV_SU_UID
        secflags = FSF_EPS
 
-Q) Sudo configures and builds without error but when I run it I get
-   a Segmentation fault.
+## Q) Sudo configures and builds without error but when I run it I get a Segmentation fault.
+
 A) If you are on a Linux system, the first thing to try is to run
    configure with the --disable-pie option, then "make clean" and
    "make".  If that fixes the problem then your operating system
@@ -281,8 +280,8 @@ A) If you are on a Linux system, the first thing to try is to run
    Please send a message to sudo@sudo.ws with system details such
    as the Linux distro, kernel version and CPU architecture.
 
-Q) When I run configure I get the following error:
-    dlopen present but libtool doesn't appear to support your platform.
+## Q) When I run configure I get the following error: `dlopen present but libtool doesn't appear to support your platform.`
+
 A) Libtool doesn't know how to support dynamic linking on the operating
    system you are building for.  If you are cross-compiling, you need to
    specify the operating system, not just the CPU type.  For example:
@@ -290,6 +289,7 @@ A) Libtool doesn't know how to support dynamic linking on the operating
    instead of just:
    --host powerpc
 
-Q) How do you pronounce `sudo'?
+## Q) How do you pronounce `sudo`?
+
 A) The official pronunciation is soo-doo (for su "do").  However, an
    alternate pronunciation, a homophone of "pseudo", is also common.
