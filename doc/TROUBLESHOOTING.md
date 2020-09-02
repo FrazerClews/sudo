@@ -51,7 +51,7 @@ Q) Sudo says 'Account expired or PAM config lacks an "account"
    but I know my account has not expired.
 A) Your PAM config lacks an "account" specification.  On Linux this
    usually means you are missing a line like:
-	account    required    pam_unix.so
+   account    required    pam_unix.so
    in /etc/pam.d/sudo.
 
 Q) Sudo is setup to log via syslog(3) but I'm not getting any log
@@ -64,8 +64,8 @@ A) Make sure you have an entry in your syslog.conf file to save
    log files, you need to create the file before syslogd will log
    to it (ie: touch /var/log/sudo).
    Note:  the facility (e.g. "auth.debug") must be separated from the
-	  destination (e.g. "/var/log/auth" or "@loghost") by
-	  tabs, *not* spaces.  This is a common error.
+     destination (e.g. "/var/log/auth" or "@loghost") by
+     tabs, *not* spaces.  This is a common error.
 
 Q) When sudo asks me for my password it never accepts what I enter even
    though I know I entered my password correctly.
@@ -101,7 +101,7 @@ A) There is no support for making an NIS/NIS+ map/table out of
 Q) I don't run sendmail on my machine.  Does this mean that I cannot
    use sudo?
 A) No, you just need to disable mailing with a line like:
-	Defaults !mailerpath
+   Defaults !mailerpath
    in your sudoers file or run configure with the --without-sendmail
    option.
 
@@ -176,8 +176,8 @@ A) Starting with Solaris 11, asprintf(3) is included in the standard
    C library.  To build a version of sudo on a Solaris 11 machine that
    will run on an older Solaris release, edit config.h and comment out
    the lines:
-	#define HAVE_ASPRINTF 1
-	#define HAVE_VASPRINTF 1
+   #define HAVE_ASPRINTF 1
+   #define HAVE_VASPRINTF 1
    and run make.
 
 Q) When I run "visudo" it says "sudoers file busy, try again later."
@@ -201,18 +201,18 @@ A) Even though "cd" is a shell built-in command, some operating systems
 Q) When I run sudo it says I am not allowed to run the command as root
    but I don't want to run it as root, I want to run it as another user.
    My sudoers file entry looks like:
-    bob	ALL=(oracle) ALL
+    bob  ALL=(oracle) ALL
 A) The default user sudo tries to run things as is always root, even if
    the invoking user can only run commands as a single, specific user.
    This may change in the future but at the present time you have to
    work around this using the 'runas_default' option in sudoers.
    For example:
-    Defaults:bob	runas_default=oracle
+    Defaults:bob  runas_default=oracle
    would achieve the desired result for the preceding sudoers fragment.
 
 Q) When I try to run sudo via ssh, I get the error:
     sudo: a terminal is required to read the password; either use the -S
-	  option to read from standard input or configure an askpass helper
+     option to read from standard input or configure an askpass helper
 A) If sudo needs to authenticate a user, it requires access to the user's
    terminal to disable echo so the password is not displayed to the screen.
    The above message indicates that no terminal was present.
@@ -268,9 +268,9 @@ A) AIX's Enhanced RBAC is preventing sudo from running.  To fix
    the path to sudo as needed) and run the setkst command as root:
 
     /usr/local/bin/sudo:
-	    accessauths = ALLOW_ALL
-	    innateprivs = PV_DAC_GID,PV_DAC_R,PV_DAC_UID,PV_DAC_X,PV_FS_CHOWN,PV_PROC_PRIO,PV_NET_PORT,PV_NET_CNTL,PV_SU_UID
-	    secflags = FSF_EPS
+       accessauths = ALLOW_ALL
+       innateprivs = PV_DAC_GID,PV_DAC_R,PV_DAC_UID,PV_DAC_X,PV_FS_CHOWN,PV_PROC_PRIO,PV_NET_PORT,PV_NET_CNTL,PV_SU_UID
+       secflags = FSF_EPS
 
 Q) Sudo configures and builds without error but when I run it I get
    a Segmentation fault.
@@ -286,9 +286,9 @@ Q) When I run configure I get the following error:
 A) Libtool doesn't know how to support dynamic linking on the operating
    system you are building for.  If you are cross-compiling, you need to
    specify the operating system, not just the CPU type.  For example:
-	--host powerpc-unknown-linux
+   --host powerpc-unknown-linux
    instead of just:
-	--host powerpc
+   --host powerpc
 
 Q) How do you pronounce `sudo'?
 A) The official pronunciation is soo-doo (for su "do").  However, an
