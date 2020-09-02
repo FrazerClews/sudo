@@ -9,19 +9,19 @@ privileges as possible but still allow people to get their work done.
 Before you try and build sudo, *please* make sure you have the current
 version.  The latest sudo may always be gotten via anonymous ftp from
 ftp.sudo.ws in the directory /pub/sudo/ or from the sudo web site,
-https://www.sudo.ws/
+<https://www.sudo.ws/>
 
-The distribution is sudo-M.m.tar.gz where `M' is the major version
-number and `m' is the minor version number.  BETA versions of sudo may
-also be available.  If you join the `sudo-workers' mailing list you
-will get the BETA announcements (see the `Mailing lists' section below).
+The distribution is sudo-M.m.tar.gz where `M` is the major version
+number and `m` is the minor version number.  BETA versions of sudo may
+also be available.  If you join the `sudo-workers` mailing list you
+will get the BETA announcements (see the `Mailing lists` section below).
 
 ## What's new
 
 See the NEWS file for a list of major changes in this release.
 For a complete list of changes, see the ChangeLog file.  For a
 summary of major changes to the current stable release, see the web
-page, https://www.sudo.ws/stable.html.
+page, <https://www.sudo.ws/stable.html>.
 
 If you are upgrading from an earlier version of Sudo, please see
 the UPGRADE file in the doc directory.
@@ -31,30 +31,30 @@ You can find a list of contributors to sudo in the doc/CONTRIBUTORS file.
 
 ## Building the release
 
-Please read the installation guide in the `INSTALL' file before trying to
+Please read the installation guide in the `INSTALL` file before trying to
 build sudo.  Pay special attention to the "OS dependent notes" section.
 
 ## Copyright
 
 Sudo is distributed under an ISC-style license.
-Please refer to the `LICENSE' file included with the release for details.
+Please refer to the `LICENSE` file included with the release for details.
 
 ## Mailing lists
 
 sudo-announce - This list receives announcements whenever a new version
-of sudo is released. https://www.sudo.ws/mailman/listinfo/sudo-announce
+of sudo is released. <https://www.sudo.ws/mailman/listinfo/sudo-announce>
 
 sudo-blog - This list receives a message when a new sudo blog
-article is available. https://www.sudo.ws/mailman/listinfo/sudo-blog
+article is available. <https://www.sudo.ws/mailman/listinfo/sudo-blog>
 
 sudo-commits - This list receives a message for each commit made to
-the sudo source repository. https://www.sudo.ws/mailman/listinfo/sudo-commits
+the sudo source repository. <https://www.sudo.ws/mailman/listinfo/sudo-commits>
 
 sudo-users - This list is for questions and general discussion about sudo.
-https://www.sudo.ws/mailman/listinfo/sudo-users
+<https://www.sudo.ws/mailman/listinfo/sudo-users>
 
 sudo-workers - This list is for people working on and porting sudo.
-https://www.sudo.ws/mailman/listinfo/sudo-workers
+<https://www.sudo.ws/mailman/listinfo/sudo-workers>
 
 To subscribe to a list, visit its url (as listed above) and enter
 your email address to subscribe.  Digest versions are available but
@@ -66,16 +66,16 @@ for the appropriate links.
 
 ## Web page
 
-There is a sudo web page at https://www.sudo.ws/ that contains an
+There is a sudo web page at <https://www.sudo.ws/> that contains an
 overview of sudo, documentation, downloads, a bug tracker, information
 about beta versions and other useful info.
 
 ## Bug reports
 
 If you have found what you believe to be a bug, you can file a bug
-report in the sudo bug database, on the web at https://bugzilla.sudo.ws/.
+report in the sudo bug database, on the web at <https://bugzilla.sudo.ws/>.
 
-Please read over the `TROUBLESHOOTING' file in the doc directory *before*
+Please read over the `TROUBLESHOOTING` file in the doc directory *before*
 submitting a bug report.  When reporting bugs, please be sure to include
 the version of sudo you are using as well as the platform you are running
 it on.
